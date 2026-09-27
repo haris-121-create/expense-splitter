@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Splitter</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2a5298">
+<link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+
+  <div class="container">
+    <div class="top-bar">
+      <h1>
+        <svg class="title-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/>
+          <path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/>
+          <path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/>
+        </svg>
+        Expense Splitter
+      </h1>
+      <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    </div>
+
+    <!-- Section: Add Friends -->
+    <section class="card" id="friends-section">
+      <h2>Friends</h2>
+      <div class="input-row">
+        <input type="text" id="friend-name-input" placeholder="Friend Name">
+        <button id="add-friend-btn">Add</button>
+      </div>
+      <p class="error-message" id="friend-error"></p>
+      <ul id="friends-list"></ul>
+    </section>
+
+    <!-- Section: Add Expense -->
+    <section class="card" id="expense-section">
+      <h2>Add Expense</h2>
+      <div class="input-row">
+        <select id="expense-friend-select"></select>
+        <input type="number" id="expense-amount-input" placeholder="Amount">
+        <button id="add-expense-btn">Add Expense</button>
+      </div>
+      <p class="error-message" id="expense-error"></p>
+      <ul id="expense-list"></ul>
+    </section>
+
+    <!-- Section: Expense Chart -->
+    <section class="card" id="chart-section">
+      <h2>Expense Summary</h2>
+      <div id="chart-output"></div>
+    </section>
+
+    <!-- Section: Calculate & Results -->
+    <section class="card" id="result-section">
+      <button id="calculate-btn">Calculate Split</button>
+      <div id="result-output"></div>
+    </section>
+
+    <!-- Section: Past History -->
+    <section class="card" id="history-section">
+      <div class="history-header">
+        <h2>Past History</h2>
+        <button id="clear-history-btn">Clear All</button>
+      </div>
+      <button id="save-history-btn">Save Current to History</button>
+      <div id="history-output"></div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
