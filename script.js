@@ -91,7 +91,7 @@ function renderFriends() {
 
 // ===== Edit / Delete Friend =====
 function editFriend(index) {
-  const newName = prompt('Naya naam likho:', friends[index]);
+  const newName = prompt('Enter new name:', friends[index]);
   if (newName && newName.trim() !== '') {
     const oldName = friends[index];
     friends[index] = newName.trim();
@@ -108,7 +108,7 @@ function editFriend(index) {
 
 function deleteFriend(index) {
   const name = friends[index];
-  if (!confirm(`${name} ko remove karna hai? Unke expenses bhi hat jayenge.`)) return;
+  if (!confirm(`${name} Their expenses will also be deleted.`)) return;
   friends.splice(index, 1);
   expenses = expenses.filter(exp => exp.name !== name);
   saveData();
@@ -150,7 +150,7 @@ function renderExpenses() {
 
 // ===== Edit / Delete Expense =====
 function editExpense(index) {
-  const newAmount = prompt('Naya amount likho:', expenses[index].amount);
+  const newAmount = prompt('Enter new amount:', expenses[index].amount);
   const parsed = parseFloat(newAmount);
   if (!isNaN(parsed) && parsed > 0) {
     expenses[index].amount = parsed;
@@ -173,11 +173,11 @@ addFriendBtn.addEventListener('click', () => {
   friendError.textContent = '';
 
   if (name === '') {
-    friendError.textContent = 'Naam likhna zaroori hai.';
+    friendError.textContent = 'Name is required.';
     return;
   }
   if (friends.includes(name)) {
-    friendError.textContent = 'Ye naam pehle se list mein hai.';
+    friendError.textContent = 'This name already exists.';
     return;
   }
 
@@ -195,11 +195,11 @@ addExpenseBtn.addEventListener('click', () => {
   expenseError.textContent = '';
 
   if (!name) {
-    expenseError.textContent = 'Pehle ek friend add karo.';
+    expenseError.textContent = 'Please add a friend first.';
     return;
   }
   if (isNaN(amount) || amount <= 0) {
-    expenseError.textContent = 'Sahi amount likho.';
+    expenseError.textContent = 'Please enter a valid amount.';
     return;
   }
 
@@ -215,7 +215,7 @@ function renderChart() {
   chartOutput.innerHTML = '';
 
   if (expenses.length === 0) {
-    chartOutput.innerHTML = '<p>Koi expense nahi hai abhi.</p>';
+    chartOutput.innerHTML = '<p>No expenses added yet.</p>';
     return;
   }
 
@@ -251,7 +251,7 @@ function renderChart() {
 // ===== Calculate Settle-Up =====
 calculateBtn.addEventListener('click', () => {
   if (friends.length === 0 || expenses.length === 0) {
-    resultOutput.innerHTML = '<p>Pehle friends aur expenses add karo.</p>';
+    resultOutput.innerHTML = '<p>Please add friends and expenses first.</p>';
     return;
   }
 
@@ -293,7 +293,7 @@ calculateBtn.addEventListener('click', () => {
 
   let html = `<p><strong>Total: Rs. ${grandTotal.toFixed(2)}</strong> | Per head: Rs. ${share.toFixed(2)}</p>`;
   if (transactions.length === 0) {
-    html += '<p>Sab barabar hai, kisi ko kuch nahi dena! 🎉</p>';
+    html += '<p>Everyone is settled up! 🎉</p>';
   } else {
     transactions.forEach(t => {
       html += `<div class="settle-line">${t}</div>`;
@@ -325,7 +325,7 @@ saveHistoryBtn.addEventListener('click', () => {
 
 // ===== Clear All History =====
 clearHistoryBtn.addEventListener('click', () => {
-  if (!confirm('Puri history delete karni hai?')) return;
+  if (!confirm('Delete all history?')) return;
   history = [];
   saveData();
   renderHistory();
@@ -371,7 +371,7 @@ function renderHistory() {
 
 // ===== Delete Single History Entry =====
 function deleteHistoryEntry(index) {
-  if (!confirm('Ye history entry delete karni hai?')) return;
+  if (!confirm('Delete this history entry?')) return;
   history.splice(index, 1);
   saveData();
   renderHistory();

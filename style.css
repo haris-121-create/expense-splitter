@@ -53,6 +53,17 @@ body {
   position: relative;
 }
 
+@media (max-width: 480px) {
+  .top-bar {
+    justify-content: space-between;
+    padding: 0 8px;
+  }
+
+  .theme-toggle {
+    position: static;
+  }
+}
+
 h1 {
   color: #fff;
   text-align: center;
