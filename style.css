@@ -119,8 +119,16 @@ h1 {
 
 .input-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 6px;
+}
+
+.input-row > input,
+.input-row > select,
+.input-row > button {
+  flex: 1 1 100%;
+  min-width: 0;
 }
 
 input, select {
@@ -264,3 +272,4 @@ li {
 .history-delete-btn:hover {
   background: #a53c3c;
 }
+
