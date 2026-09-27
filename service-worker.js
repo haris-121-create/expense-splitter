@@ -1,4 +1,4 @@
-const CACHE_NAME = 'expense-splitter-v1';
+const CACHE_NAME = 'expense-splitter-v2';
 const FILES_TO_CACHE = [
   './index.html',
   './style.css',
